@@ -76,7 +76,8 @@ const server = http.createServer(function(req, res) {
       })
       req.on('end', function() {
         res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-        res.end(topBar());
+        res.write(fs.readFileSync('./index.html'));
+        res.end();
       })
     } else {
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
