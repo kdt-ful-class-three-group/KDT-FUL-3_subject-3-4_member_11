@@ -17,6 +17,30 @@ async function logJSONData() {
     sections[1].appendChild(dataName);
     // 2번째 섹션의 자식요소로 dataName이 들어감.
     };
+
+  for(let i=0; i<jsonData.length; i++) {
+    const main = document.querySelector('main');
+    const sections = document.querySelectorAll('section');
+    const li = document.querySelectorAll('li');
+    const newSection = document.createElement('section');
+    const h1 = document.createElement('h1');
+    const dataName = document.createElement('li')
+    const dataMain = document.createElement('li')
+
+    h1.textContent = `${jsonData[i].title}`;
+    dataName.textContent = `작성자: ${jsonData[i].name}`;
+    dataMain.textContent = `내용: ${jsonData[i].main}`;
+    
+
+    li[i].addEventListener('click', function() {
+      sections[1].style.display = 'none'
+
+      newSection.appendChild(h1);
+      newSection.appendChild(dataName);
+      newSection.appendChild(dataMain);
+      main.appendChild(newSection);
+    });
+  };
 }
 
 logJSONData();
