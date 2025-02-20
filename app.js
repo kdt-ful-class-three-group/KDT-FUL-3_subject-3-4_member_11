@@ -17,6 +17,12 @@ const server = http.createServer(function(req, res) {
       // 글 상세 페이지 요청에 대한 get요청 처리
     }
   }
+  if(req.method === 'POST') {
+  // 요청받는 메서드가 POST일 경우 요청을 처리한다.
+    if(req.url === '/data') {
+      // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
+    }
+  }
 });
 
 
