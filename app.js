@@ -2,6 +2,10 @@ const http = require('http');
 // http 모듈을 사용하겠다고 선언하는 처리
 const fs = require('fs');
 // fs포듈을 사용하겠다고 선언하는 처리
+const topBar = require('./topBar');
+// topBar 모듈을 사용하겠다고 선언
+const addText = require('./addText');
+// addTets 모듈을 사용하겠다고 선언
 
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
@@ -9,18 +13,35 @@ const server = http.createServer(function(req, res) {
   // 요청받는 메서드가 GET일 경우 요청을 처리한다.
     if(req.url === '/') {
       // 초기화면 및 홈 요청에 대한 get요청 처리
-    }
+      res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
+      res.end(topBar());
+    } else
     if(req.url === '/list') {
       // 글목록 페이지 요청에 대한 get요청 처리
-    }
+      res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
+      res.end(topBar());
+    } else
+    if(req.url === '/add') {
+      // 글 상세 페이지 요청에 대한 get요청 처리
+      res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
+      res.end(addText());
+    } else
     if(req.url === '/detail') {
       // 글 상세 페이지 요청에 대한 get요청 처리
-    }
+      res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
+      res.end(topBar());
+    } else {
+      res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
+      res.end('404 Not Found');
+    } 
   }
   if(req.method === 'POST') {
   // 요청받는 메서드가 POST일 경우 요청을 처리한다.
     if(req.url === '/data') {
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
+    } else {
+      res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
+      res.end('404 Not Found');
     }
   }
 });
