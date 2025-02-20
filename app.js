@@ -5,6 +5,18 @@ const fs = require('fs');
 
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
+  if(req.method === 'GET') {
+  // 요청받는 메서드가 GET일 경우 요청을 처리한다.
+    if(req.url === '/') {
+      // 초기화면 및 홈 요청에 대한 get요청 처리
+    }
+    if(req.url === '/list') {
+      // 글목록 페이지 요청에 대한 get요청 처리
+    }
+    if(req.url === '/detail') {
+      // 글 상세 페이지 요청에 대한 get요청 처리
+    }
+  }
 });
 
 
