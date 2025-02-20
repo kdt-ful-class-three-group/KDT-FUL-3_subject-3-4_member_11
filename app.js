@@ -4,8 +4,6 @@ const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
 const qs = require('querystring');
 // 쿼리스트링 모듈을 사용하겠다고 선언
-const topBar = require('./topBar');
-// topBar 모듈을 사용하겠다고 선언
 
 
 const server = http.createServer(function(req, res) {
@@ -33,7 +31,8 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/detail') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-      res.end(topBar());
+      res.write(fs.readFileSync(`./add.html`));
+      res.end();
     } else 
     if(req.url.endsWith('.js')) {
       // 글 상세 페이지 요청에 대한 get요청 처리
