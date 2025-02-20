@@ -22,7 +22,8 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/list') {
       // 글목록 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-      res.end(topBar());
+      res.write(fs.readFileSync('./index.html'));
+      res.end();
     } else
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
@@ -33,7 +34,20 @@ const server = http.createServer(function(req, res) {
       // 글 상세 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
       res.end(topBar());
-    } else {
+    } else 
+    if(req.url.endsWith('.js')) {
+      // 글 상세 페이지 요청에 대한 get요청 처리
+      res.writeHead(200, {'content-type': 'text/javascript; charset=utf-8'});
+      res.write(fs.readFileSync(`.${req.url}`));
+      res.end();
+    } else 
+    if(req.url.endsWith('.json')) {
+      // 글 상세 페이지 요청에 대한 get요청 처리
+      res.writeHead(200, {'content-type': 'text/javascript; charset=utf-8'});
+      res.write(fs.readFileSync(`.${req.url}`));
+      res.end();
+    } 
+    else{
       // 지정되어있지 않은 get요청이 들어오면, 404에러 처리
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
       res.end('404 Not Found');
