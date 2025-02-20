@@ -6,8 +6,7 @@ const qs = require('querystring');
 // 쿼리스트링 모듈을 사용하겠다고 선언
 const topBar = require('./topBar');
 // topBar 모듈을 사용하겠다고 선언
-const addText = require('./addText');
-// addTets 모듈을 사용하겠다고 선언
+
 
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
@@ -28,7 +27,8 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-      res.end(addText());
+      res.write(fs.readFileSync(`./add.html`));
+      res.end();
     } else
     if(req.url === '/detail') {
       // 글 상세 페이지 요청에 대한 get요청 처리
