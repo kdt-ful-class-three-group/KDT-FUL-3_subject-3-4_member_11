@@ -16,7 +16,8 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/') {
       // 초기화면 및 홈 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-      res.end(topBar());
+      res.write(fs.readFileSync('./index.html'));
+      res.end();
     } else
     if(req.url === '/list') {
       // 글목록 페이지 요청에 대한 get요청 처리
