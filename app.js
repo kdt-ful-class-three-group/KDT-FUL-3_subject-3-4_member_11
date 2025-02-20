@@ -1,7 +1,9 @@
 const http = require('http');
 // http 모듈을 사용하겠다고 선언하는 처리
 const fs = require('fs');
-// fs포듈을 사용하겠다고 선언하는 처리
+// fs모듈을 사용하겠다고 선언하는 처리
+const qs = require('querystring');
+// 쿼리스트링 모듈을 사용하겠다고 선언
 const topBar = require('./topBar');
 // topBar 모듈을 사용하겠다고 선언
 const addText = require('./addText');
@@ -31,6 +33,7 @@ const server = http.createServer(function(req, res) {
       res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
       res.end(topBar());
     } else {
+      // 지정되어있지 않은 get요청이 들어오면, 404에러 처리
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
       res.end('404 Not Found');
     } 
@@ -40,7 +43,13 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/data') {
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
       req.on('data', function(data) {
-        
+        // post로 데이터를 받아 올 때, 기능을 추가하는 코드
+        console.log(data.toString());
+        // post로 받아온 데이터를 문자열로 나타내서 확인 
+        const dataPar = qs.parse(data.toString());
+        // post로 받아온 데이터를 문자열로 나타내면 그 데이터는 쿼리스트링 형식으로 작성되어있기 때문에 dataPar라는 변수에 qs.parse로 파싱(해석)하고, 객체로 변환하는 코드 
+        console.log(dataPar);
+        // post로 받아온 데이터가 잘 객체로 변환되었는지 확인.
       })
       req.on('end', function() {
 
