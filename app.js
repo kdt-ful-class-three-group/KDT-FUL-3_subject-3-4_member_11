@@ -39,6 +39,12 @@ const server = http.createServer(function(req, res) {
   // 요청받는 메서드가 POST일 경우 요청을 처리한다.
     if(req.url === '/data') {
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
+      req.on('data', function(data) {
+        
+      })
+      req.on('end', function() {
+
+      })
     } else {
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
       res.end('404 Not Found');
