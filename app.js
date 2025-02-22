@@ -4,6 +4,8 @@ const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
 const qs = require('querystring');
 // 쿼리스트링 모듈을 사용하겠다고 선언
+const htmlForm = require('./htmlForm');
+// htmlForm 모듈을 사용하겠다고 선언
 
 
 const server = http.createServer(function(req, res) {
@@ -89,7 +91,7 @@ const server = http.createServer(function(req, res) {
       })
       req.on('end', function() {
         res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-        res.write(fs.readFileSync('./index.html'));
+        res.write(htmlForm('데이터가 성공적으로 추가되었습니다.'));
         res.end();
       })
     } else {
