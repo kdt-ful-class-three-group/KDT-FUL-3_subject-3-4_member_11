@@ -24,8 +24,8 @@ async function logJSONData() {
     const li = document.querySelectorAll('li');
     const newSection = document.createElement('section');
     const h1 = document.createElement('h1');
-    const dataName = document.createElement('li')
-    const dataMain = document.createElement('li')
+    const dataName = document.createElement('li');
+    const dataMain = document.createElement('li');
 
     h1.textContent = `${jsonData[i].title}`;
     dataName.textContent = `작성자: ${jsonData[i].name}`;
