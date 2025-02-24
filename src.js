@@ -26,10 +26,15 @@ async function logJSONData() {
     const h1 = document.createElement('h1');
     const dataName = document.createElement('li');
     const dataMain = document.createElement('li');
+    const updateBtn = document.createElement('a');
+    // 상세페이지
 
     h1.textContent = `${jsonData[i].title}`;
     dataName.textContent = `작성자: ${jsonData[i].name}`;
     dataMain.textContent = `내용: ${jsonData[i].main}`;
+    updateBtn.textContent = `수정`;
+    updateBtn.href = `/update${i}`;
+    // 상세 페이지 내용
     
 
     li[i].addEventListener('click', function() {
@@ -38,6 +43,7 @@ async function logJSONData() {
       newSection.appendChild(h1);
       newSection.appendChild(dataName);
       newSection.appendChild(dataMain);
+      newSection.appendChild(updateBtn);
       main.appendChild(newSection);
     });
   };
