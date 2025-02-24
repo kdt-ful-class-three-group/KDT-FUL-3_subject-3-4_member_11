@@ -41,7 +41,7 @@ const server = http.createServer(function(req, res) {
     } else
     if(req.url.startsWith('/delete')) {
       // 수정페이지 설정. 형식은 update(순서) 형식이므로 startsWith를 사용.
-      const i = req.url.split('update')[1];
+      const i = req.url.split('delete')[1];
       // i라는 변수에 update의 순서를 가져옴.
       // 글 상세 페이지 요청에 대한 get요청 처리
        res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
@@ -74,7 +74,9 @@ const server = http.createServer(function(req, res) {
       updateDataForm(req, res, i);
     } else
     if(req.url.startsWith('/delete')) {
+      console.log(req.url)
       const i = req.url.split('delete')[1];
+      console.log(i);
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
       deleteDataForm(req, res, i);
     }else {
