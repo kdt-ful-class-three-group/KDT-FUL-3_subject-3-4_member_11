@@ -26,13 +26,14 @@ async function logJSONData() {
     const h1 = document.createElement('h1');
     const dataName = document.createElement('li');
     const dataMain = document.createElement('li');
-    const updateBtn = document.createElement('button');
+    const updateBtn = document.createElement('a');
     // 상세페이지
 
     h1.textContent = `${jsonData[i].title}`;
     dataName.textContent = `작성자: ${jsonData[i].name}`;
     dataMain.textContent = `내용: ${jsonData[i].main}`;
     updateBtn.textContent = `수정`;
+    updateBtn.href = `/update${i}`;
     // 상세 페이지 내용
     
 
@@ -46,36 +47,6 @@ async function logJSONData() {
       main.appendChild(newSection);
     });
   };
-  
-  for(let i=0; i<jsonData.length; i++) {
-    const main = document.querySelector('main');
-    const sections = document.querySelectorAll('section');
-    const updateBtn = document.querySelector('button');
-
-    const updateSection = document.createElement('section');
-    const upForm = document.createElement('form');
-    const upName = document.createElement('input');
-    const upTitle = document.createElement('input');
-    const upMain = document.createElement('textArea');
-    const upBtn = document.createElement('button');
-
-    upName.value = `${jsonData[i].name}`;
-    upTitle.value = `${jsonData[i].title}`;
-    upMain.value = `${jsonData[i].main}`;
-    upBtn.textContent = '수정';
-
-
-  updateBtn.addEventListener('click', function() {
-    sections[2].style.display = 'none';
-
-    updateSection.appendChild(upForm);
-    upForm.appendChild(upName);
-    upForm.appendChild(upTitle);
-    upForm.appendChild(upMain);
-    upForm.appendChild(upBtn);
-    main.appendChild(updateSection);
-  });
-}
 }
 
 logJSONData();
