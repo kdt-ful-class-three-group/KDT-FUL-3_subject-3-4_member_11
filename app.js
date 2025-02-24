@@ -4,7 +4,7 @@ const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
 const qs = require('querystring');
 // 쿼리스트링 모듈을 사용하겠다고 선언
-const htmlForm = require('./public/src/module/layout/htmlForm');
+const htmlForm = require('./public/src/module/layout/layout');
 // htmlForm 모듈을 사용하겠다고 선언
 const resForm = require('./etc/resForm');
 // resForm 모듈을 사용하겠다고 선언
@@ -17,6 +17,7 @@ const updateDataForm = require('./public/src/module/updateDataForm');
 const deleteForm = require('./public/src/deleteForm');
 // deleteForm 모듈을 사용하겠다고 선언
 const deleteDataForm = require('./public/src/module/deleteDataForm');
+const layout = require('./public/src/module/layout/layout');
 // deleteDataForm 모듈을 사용하겠다고 선언
 
 
@@ -33,15 +34,27 @@ console.log(req.url);
   // 요청받는 메서드가 GET일 경우 요청을 처리한다.
     if(req.url === '/') {
       // 초기화면 및 홈 요청에 대한 get요청 처리
-      resForm(res, 'html', 'index.html');
+      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(layout('./public/src/src.js'));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
     } else
     if(req.url.endsWith('.css')) {
       // 글목록 페이지 요청에 대한 get요청 처리
-      resForm(res, 'css', 'style.css');
+      res.writeHead(200, {'content-type': `text/css; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(fs.readFileSync(`./${req.url}`));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
     } else
     if(req.url === '/list') {
       // 글목록 페이지 요청에 대한 get요청 처리
-      resForm(res, 'html', 'index.html');
+      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(layout('./public/src/src.js'));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
     } else
     
     if(req.url === '/add') {

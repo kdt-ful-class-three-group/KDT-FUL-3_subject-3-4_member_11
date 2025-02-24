@@ -1,6 +1,6 @@
 const qs = require('querystring');
 const fs = require('fs');
-const htmlForm = require('./layout/htmlForm');
+const htmlForm = require('./layout/layout');
 
 function updateDataForm(req, res, i) {
 
