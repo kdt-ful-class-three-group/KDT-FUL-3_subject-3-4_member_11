@@ -1,29 +1,80 @@
-const qs = require('querystring');
-const fs = require('fs');
-const htmlForm = require('./htmlForm');
+function deleteForm(i) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-function deleteForm(req, res, i) {
+    section:nth-child(1) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
-req.on(function() {
-  // post로 데이터를 받아 올 때, 기능을 추가하는 코드
+    section:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-  const jsonData = JSON.parse(fs.readFileSync('data.json'));
-  // jsonData라는 변수에 data.json파일의 데이터를 파싱해서 불러온다.
-  console.log(jsonData);
-  // jsonData를 확인.
-  jsonData.splice(i, 1);
-  // jsonData의 데이터 중에 수정요청을 보낸 순서의 데이터를 삭제하고, dataPar 객체를  집어넣는다.
-  console.log(jsonData);
-  // 수정된 jsonData를 확인한다.
-  fs.writeFileSync('data.json', JSON.stringify(jsonData, null, 2), 'utf-8');
-  // data.json파일의 내용을 덮어씌우는데, 위에서 수정한 jsonData의 데이터를 집어넣는다.
-});
-req.on('end', function() {
-  res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-  res.write(htmlForm('데이터가 성공적으로 삭제되었습니다.'));
-  // 위의 행동이 끝나면 데이터가 성공적으로 수정되었습니다. 라는 문구가 나온다.
-  res.end();
-})
+    article {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input {
+      width: 300px;
+    }
+
+    textarea {
+      width: 300px;
+      height: 400px;
+      resize: none;
+    }
+
+    button {
+      width: 70px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <article>
+        <a href = "/">홈</a>
+        <a href = "/list">글 목록</a>
+      </article>
+        <a href = "/add">글 작성</a>
+    </section>
+    <section>
+      <form action="/delete${i}" method="post">
+        <div>정말로 삭제하시겠습니까?</div>
+        <button type="submit">예</button>
+        <a href = "/">아니오</a>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+  `
 }
 
 module.exports = deleteForm;

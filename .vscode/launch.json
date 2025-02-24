@@ -6,7 +6,7 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/updateDataForm.js",
+      "program": "${workspaceFolder}/deleteDataForm.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
