@@ -11,7 +11,7 @@ req.on('data', function() {
   console.log(jsonData);
   // jsonData를 확인.
   jsonData.splice(i, 1);
-  // jsonData의 데이터 중에 수정요청을 보낸 순서의 데이터를 삭제하고, dataPar 객체를  집어넣는다.
+  // jsonData의 데이터 중에 수정요청을 보낸 순서의 데이터를 삭제한다.
   console.log(jsonData);
   // 수정된 jsonData를 확인한다.
   fs.writeFileSync('data.json', JSON.stringify(jsonData, null, 2), 'utf-8');
@@ -20,7 +20,7 @@ req.on('data', function() {
 req.on('end', function() {
   res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
   res.write(htmlForm('데이터가 성공적으로 삭제되었습니다.'));
-  // 위의 행동이 끝나면 데이터가 성공적으로 수정되었습니다. 라는 문구가 나온다.
+  // 위의 행동이 끝나면 데이터가 성공적으로 삭제되었습니다. 라는 문구가 나온다.
   res.end();
 })
 }
