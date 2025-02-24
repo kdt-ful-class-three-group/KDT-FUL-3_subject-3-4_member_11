@@ -4,6 +4,15 @@
   // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
   "version": "0.2.0",
   "configurations": [
+    {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/updateDataForm.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
   {
     "name": "Launch Program",
     "program": "${workspaceFolder}/app.js",
