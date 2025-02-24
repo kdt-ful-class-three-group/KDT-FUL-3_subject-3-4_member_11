@@ -67,12 +67,12 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/data') {
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
       dataForm(req, res);
-    } 
+    } else
     if(req.url.startsWith('/update')) {
       const i = req.url.split('update')[1];
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
       updateDataForm(req, res, i);
-    }
+    } else
     if(req.url.startsWith('/delete')) {
       const i = req.url.split('delete')[1];
       // 글을 작성하면 액션은 /data, 메서드는 POST로 요청한다.
