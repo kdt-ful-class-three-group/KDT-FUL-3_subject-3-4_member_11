@@ -59,7 +59,11 @@ console.log(req.url);
     
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
-      resForm(res, 'html', 'add.html');
+      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(layout('./public/src/dataAdd.js'));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
     } else
     if(req.url.startsWith('/update')) {
       // 수정페이지 설정. 형식은 update(순서) 형식이므로 startsWith를 사용.
@@ -79,13 +83,20 @@ console.log(req.url);
     } else
     if(req.url.endsWith('.js')) {
       // url요청의 끝이 .js라면
-      resForm(res, 'javascript', req.url);
-      // 해당 경로의 파일을 javascript형식으로 가져온다.
+      res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(fs.readFileSync(`.${req.url}`));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
+      
     } else 
     if(req.url.endsWith('.json')) {
       // url요청의 끝이 .json 이라면
-      resForm(res, 'javascript', req.url);
-      // 해당 경로의 파일을 javascript형식으로 가져온다.
+      res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
+     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
+      res.write(fs.readFileSync(`.${req.url}`));
+     //  file은 불러올 파일의 이름을 이야기 한다.
+      res.end();
 
     } 
     else{
