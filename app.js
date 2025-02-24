@@ -4,19 +4,19 @@ const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
 const qs = require('querystring');
 // 쿼리스트링 모듈을 사용하겠다고 선언
-const htmlForm = require('./htmlForm');
+const htmlForm = require('./public/src/module/layout/htmlForm');
 // htmlForm 모듈을 사용하겠다고 선언
-const resForm = require('./resForm');
+const resForm = require('./etc/resForm');
 // resForm 모듈을 사용하겠다고 선언
-const dataForm = require('./dataForm');
+const dataForm = require('./public/src/module/dataForm');
 // dataForm 모듈을 사용하겠다고 선언
-const updateForm = require('./updateForm');
+const updateForm = require('./public/src/updateForm');
 // updateForm 모듈을 사용하겠다고 선언
-const updateDataForm = require('./updateDataForm');
+const updateDataForm = require('./public/src/module/updateDataForm');
 // updateDataForm 모듈을 사용하겠다고 선언
-const deleteForm = require('./deleteForm');
+const deleteForm = require('./public/src/deleteForm');
 // deleteForm 모듈을 사용하겠다고 선언
-const deleteDataForm = require('./deleteDataForm');
+const deleteDataForm = require('./public/src/module/deleteDataForm');
 // deleteDataForm 모듈을 사용하겠다고 선언
 
 
