@@ -15,6 +15,9 @@ const deleteDataForm = require('./deleteDataForm');
 
 
 const server = http.createServer(function(req, res) {
+  if(!fs.existsSync('data.json')) {
+  fs.writeFileSync('data.json', JSON.stringify([], null, 2), 'utf-8');
+}
 // server라는 변수에 서버를 생성하는 함수를 담는다.
   if(req.method === 'GET') {
   // 요청받는 메서드가 GET일 경우 요청을 처리한다.
