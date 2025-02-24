@@ -38,6 +38,7 @@ req.on('data', function(data) {
 req.on('end', function() {
   res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
   res.write(htmlForm('데이터가 성공적으로 추가되었습니다.'));
+  // 위의 행동들이 잘 실행되면, 데이터가 성공적으로 추가 되었습니다 문구가 표시됨.
   res.end();
 })
 }

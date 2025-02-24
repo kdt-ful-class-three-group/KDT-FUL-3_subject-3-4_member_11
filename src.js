@@ -20,35 +20,63 @@ async function logJSONData() {
 
   for(let i=0; i<jsonData.length; i++) {
     const main = document.querySelector('main');
+    // 메인 태그를 불러온다.
     const sections = document.querySelectorAll('section');
+    // 섹션 태그 전부를 불러온다.
     const li = document.querySelectorAll('li');
+    // li태그를 전부 불러온다.
     const newSection = document.createElement('section');
+    // 새로운 섹션 생성
     const h1 = document.createElement('h1');
+    // 새로운 h1태그 생성
     const dataName = document.createElement('li');
+    // 새로운 li태그 생성
     const dataMain = document.createElement('li');
+    // 새로운 li태그 생성
     const updateBtn = document.createElement('a');
-    // 상세페이지
+    // 수정 버튼을 a태그로 생성
+    const deleteBtn = document.createElement('a');
+    // 삭제 버튼을 a태그로 생성
+    // * 상세페이지
 
     h1.textContent = `${jsonData[i].title}`;
+    // h1태그에는 jsondata의 제목을 넣는다.
     dataName.textContent = `작성자: ${jsonData[i].name}`;
+    // li태그 하나 에는 jsondata의 이름을 넣는다.
     dataMain.textContent = `내용: ${jsonData[i].main}`;
+    // 남은 li태그 하나 에는 jsondata의 본문을 넣는다.
     updateBtn.textContent = `수정`;
+    // 수정버튼에 수정이라는 글자를 넣어준다.
     updateBtn.href = `/update${i}`;
-    // 상세 페이지 내용
+    // 수정버튼을 누르면 움직이는 경로는 update${i}
+    deleteBtn.textContent = `삭제`;
+    // 삭제버튼에 삭제라는 글자를 넣어준다.
+    deleteBtn.href = `/delete${i}`;
+    // 삭제버튼을 누르면 움직이는 경로는 update${i}
+    // * 상세 페이지 내용
     
 
     li[i].addEventListener('click', function() {
+      // 어떤 순서의 li를 클릭하면
       sections[1].style.display = 'none'
+      // 2번쨰 섹션이 display none 되고,
 
       newSection.appendChild(h1);
+      // h1태그 는 새로운 섹션에
       newSection.appendChild(dataName);
+      // dataName도 새로운 섹션에
       newSection.appendChild(dataMain);
+      // dataMain도 새로운 섹션에
       newSection.appendChild(updateBtn);
+      // 수정버튼도 새로운 섹션에
+      newSection.appendChild(deleteBtn);
+      // 삭제버튼도 새로운 섹션에
       main.appendChild(newSection);
+      // 새로운 섹션은 main에 자식요소로 지정해서, 생성되게 만듦.
     });
   };
 }
 
 logJSONData();
-
+// json데이터를 가져와주는 fetch를 사용하는 함수를 실행한다.
 
