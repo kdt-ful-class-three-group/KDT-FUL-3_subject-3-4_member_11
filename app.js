@@ -22,6 +22,7 @@ const deleteDataForm = require('./deleteDataForm');
 
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
+console.log(req.url);
 
   if(!fs.existsSync('data.json')) {
     // 만일 data.json파일이 존재하지 않다면,
@@ -34,10 +35,15 @@ const server = http.createServer(function(req, res) {
       // 초기화면 및 홈 요청에 대한 get요청 처리
       resForm(res, 'html', 'index.html');
     } else
+    if(req.url.endsWith('.css')) {
+      // 글목록 페이지 요청에 대한 get요청 처리
+      resForm(res, 'css', 'style.css');
+    } else
     if(req.url === '/list') {
       // 글목록 페이지 요청에 대한 get요청 처리
       resForm(res, 'html', 'index.html');
     } else
+    
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       resForm(res, 'html', 'add.html');
