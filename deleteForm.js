@@ -66,9 +66,10 @@ function deleteForm(i) {
     </section>
     <section>
       <form action="/delete${i}" method="post">
-        <div>정말로 삭제하시겠습니까?</div>
-        <button type="submit">예</button>
-        <a href = "/">아니오</a>
+        <div>삭제를 원하신다면 아래에 삭제 라고 입력해 주십시오.</div>
+        <input type="text" name="delete" placeholder="삭제" pattern="삭제" required>
+        <button type="submit">삭제</button>
+        <a href = "/">글목록으로 돌아가기</a>
       </form>
     </section>
   </main>
