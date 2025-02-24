@@ -27,6 +27,7 @@ async function logJSONData() {
     const dataName = document.createElement('li');
     const dataMain = document.createElement('li');
     const updateBtn = document.createElement('a');
+    const deleteBtn = document.createElement('a');
     // 상세페이지
 
     h1.textContent = `${jsonData[i].title}`;
@@ -34,6 +35,9 @@ async function logJSONData() {
     dataMain.textContent = `내용: ${jsonData[i].main}`;
     updateBtn.textContent = `수정`;
     updateBtn.href = `/update${i}`;
+    deleteBtn.textContent = `삭제`;
+    deleteBtn.href = `/delete${i}`;
+
     // 상세 페이지 내용
     
 
@@ -44,6 +48,7 @@ async function logJSONData() {
       newSection.appendChild(dataName);
       newSection.appendChild(dataMain);
       newSection.appendChild(updateBtn);
+      newSection.appendChild(deleteBtn);
       main.appendChild(newSection);
     });
   };
