@@ -7,6 +7,7 @@ const qs = require('querystring');
 const htmlForm = require('./htmlForm');
 const resForm = require('./resForm');
 const dataForm = require('./dataForm');
+const updateForm = require('./updateForm');
 // htmlForm 모듈을 사용하겠다고 선언
 
 
@@ -25,6 +26,15 @@ const server = http.createServer(function(req, res) {
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       resForm(res, 'html', 'add.html');
+    } else
+    if(req.url.startsWith('/update')) {
+      // 수정페이지 설정. 형식은 update(순서) 형식이므로 startsWith를 사용.
+      const i = req.url.split('update')[1];
+      // i라는 변수에 update의 순서를 가져옴.
+      // 글 상세 페이지 요청에 대한 get요청 처리
+       res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
+            res.write(updateForm(i));
+            res.end();
     } else
     if(req.url.endsWith('.js')) {
       // 글 상세 페이지 요청에 대한 get요청 처리
