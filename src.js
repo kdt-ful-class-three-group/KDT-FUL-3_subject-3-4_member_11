@@ -33,6 +33,8 @@ async function logJSONData() {
     // 새로운 li태그 생성
     const dataMain = document.createElement('li');
     // 새로운 li태그 생성
+    const btnArticle = document.createElement('article');
+    // 버튼들이 들어갈 article태그 생성
     const updateBtn = document.createElement('a');
     // 수정 버튼을 a태그로 생성
     const deleteBtn = document.createElement('a');
@@ -45,6 +47,11 @@ async function logJSONData() {
     // li태그 하나 에는 jsondata의 이름을 넣는다.
     dataMain.textContent = `내용: ${jsonData[i].main}`;
     // 남은 li태그 하나 에는 jsondata의 본문을 넣는다.
+    btnArticle.style.display = 'flex';
+    btnArticle.style.flexDirection = 'row';
+    btnArticle.style.justifyContent = 'flex-end';
+    // 버튼아티클 스타일 지정
+
     updateBtn.textContent = `수정`;
     // 수정버튼에 수정이라는 글자를 넣어준다.
     updateBtn.href = `/update${i}`;
@@ -67,10 +74,12 @@ async function logJSONData() {
       // dataName도 새로운 섹션에
       newSection.appendChild(dataMain);
       // dataMain도 새로운 섹션에
-      newSection.appendChild(updateBtn);
-      // 수정버튼도 새로운 섹션에
-      newSection.appendChild(deleteBtn);
-      // 삭제버튼도 새로운 섹션에
+      btnArticle.appendChild(updateBtn);
+      // 수정버튼은 버튼아티클에
+      btnArticle.appendChild(deleteBtn);
+      // 삭제버튼도 버튼아티클에
+      newSection.appendChild(btnArticle);
+      // 버튼 아티클은 새로운 섹션에
       main.appendChild(newSection);
       // 새로운 섹션은 main에 자식요소로 지정해서, 생성되게 만듦.
     });
