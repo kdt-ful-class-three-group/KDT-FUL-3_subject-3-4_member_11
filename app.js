@@ -26,10 +26,6 @@ const server = http.createServer(function(req, res) {
       // 글 상세 페이지 요청에 대한 get요청 처리
       resForm(res, 'html', 'add.html');
     } else
-    if(req.url === '/detail') {
-      // 글 상세 페이지 요청에 대한 get요청 처리
-      resForm(res, 'html', 'add.html');
-    } else 
     if(req.url.endsWith('.js')) {
       // 글 상세 페이지 요청에 대한 get요청 처리
       resForm(res, 'javascript', req.url);
