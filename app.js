@@ -140,4 +140,4 @@ server.listen(PORT, function() {
   // 서버를 실행한다. PORT번호는 위에서 상수선언한 PORT의 값 8000
   console.log(`서버가 http://localhost:${PORT} 에서 실행 중입니다.`);
   // 서버가 실행되면, 콘솔에 서버가 실행중이라는 문구가 나타난다.
-})
+});
