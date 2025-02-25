@@ -18,6 +18,7 @@ const deleteForm = require('./public/src/deleteForm');
 // deleteForm 모듈을 사용하겠다고 선언
 const deleteDataForm = require('./public/src/module/deleteDataForm');
 const layout = require('./public/src/module/layout/layout');
+const postUpdate = require('./public/src/module/postUpdate');
 // deleteDataForm 모듈을 사용하겠다고 선언
 
 
@@ -70,7 +71,7 @@ console.log(req.url);
       const i = req.url.split('update')[1];
       // i라는 변수에 update의 순서를 가져옴.
        res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-       res.write(updateForm(i));
+       res.write(layout('./public/src/dataUpdate.js', i, postUpdate()));
        res.end();
     } else
     if(req.url.startsWith('/delete')) {
