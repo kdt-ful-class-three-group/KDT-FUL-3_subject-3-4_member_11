@@ -71,7 +71,7 @@ console.log(req.url);
       const i = req.url.split('update')[1];
       // i라는 변수에 update의 순서를 가져옴.
        res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-       res.write(layout('./public/src/dataUpdate.js'), i);
+       res.write(layout('./public/src/dataUpdate.js', i));
        res.end();
     } else
     if(req.url.startsWith('/delete')) {
