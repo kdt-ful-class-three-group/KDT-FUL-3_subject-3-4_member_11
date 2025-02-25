@@ -14,7 +14,7 @@ const updateForm = require('./etc/updateForm');
 // updateForm 모듈을 사용하겠다고 선언
 const updateDataForm = require('./public/src/module/updateDataForm');
 // updateDataForm 모듈을 사용하겠다고 선언
-const deleteForm = require('./public/src/deleteForm');
+const deleteForm = require('./etc/deleteForm');
 // deleteForm 모듈을 사용하겠다고 선언
 const deleteDataForm = require('./public/src/module/deleteDataForm');
 const layout = require('./public/src/module/layout/layout');
