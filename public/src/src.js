@@ -32,12 +32,12 @@ async function logJSONData() {
     let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
-    function makeElement(variable, tagName) {
-      for(i=0; i<variable.length; i++) {
-      variable[i] = document.createElement(tagName[i]);
+    function makeElement(tagName) {
+      for(i=0; i<tagName.length; i++) {
+      tagName[i] = document.createElement(tagName[i]);
     }}
 
-    makeElement(variable, tagName);
+    makeElement(tagName);
     // const h1 = document.('h1');
     // // 새로운 h1태그 생성
     // const dataName = document.createElement('li');
@@ -63,20 +63,20 @@ async function logJSONData() {
     // const delBtn = document.createElement('button');
     // * 삭제페이지
 
-    variable[0].textContent = `${jsonData[i].title}`;
+    tagName[0].textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
-    variable[1].textContent = `작성자: ${jsonData[i].name}`;
+    tagName[1].textContent = `작성자: ${jsonData[i].name}`;
     // li태그 하나 에는 jsondata의 이름을 넣는다.
-    variable[2].textContent = `내용: ${jsonData[i].main}`;
+    tagName[2].textContent = `내용: ${jsonData[i].main}`;
     // 남은 li태그 하나 에는 jsondata의 본문을 넣는다.
-    variable[3].style.display = 'flex';
-    variable[3].style.flexDirection = 'row';
-    variable[3].style.justifyContent = 'flex-end';
+    tagName[3].style.display = 'flex';
+    tagName[3].style.flexDirection = 'row';
+    tagName[3].style.justifyContent = 'flex-end';
     // 버튼아티클 스타일 지정
 
-    variable[4].textContent = `수정`;
+    tagName[4].textContent = `수정`;
     // 수정버튼에 수정이라는 글자를 넣어준다.
-    variable[4].textContent = `삭제`;
+    tagName[4].textContent = `삭제`;
     // 삭제버튼에 삭제라는 글자를 넣어준다.
     // * 상세 페이지 내용
     
@@ -86,17 +86,17 @@ async function logJSONData() {
       sections[1].style.display = 'none'
       // 2번쨰 섹션이 display none 되고,
 
-      sections[2].appendChild(variable[0]);
+      sections[2].appendChild(tagName[0]);
       // h1태그 는 새로운 섹션에
-      sections[2].appendChild(variable[1]);
+      sections[2].appendChild(tagName[1]);
       // dataName도 새로운 섹션에
-      sections[2].appendChild(variable[2]);
+      sections[2].appendChild(tagName[2]);
       // dataMain도 새로운 섹션에
-      variable[3].appendChild(variable[4]);
+      tagName[3].appendChild(tagName[4]);
       // 수정버튼은 버튼아티클에
-      variable[3].appendChild(variable[5]);
+      tagName[3].appendChild(tagName[5]);
       // 삭제버튼도 버튼아티클에
-      sections[2].appendChild(variable[3]);
+      sections[2].appendChild(tagName[3]);
       // 버튼 아티클은 새로운 섹션에
     });
 
