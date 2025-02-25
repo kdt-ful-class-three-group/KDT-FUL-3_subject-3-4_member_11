@@ -18,6 +18,8 @@ async function logJSONData() {
     // 2번째 섹션의 자식요소로 dataName이 들어감.
     };
 
+    // ! 리스트
+
   for(let i=0; i<jsonData.length; i++) {
     const main = document.querySelector('main');
     // 메인 태그를 불러온다.
@@ -25,30 +27,40 @@ async function logJSONData() {
     // 섹션 태그 전부를 불러온다.
     const li = document.querySelectorAll('li');
     // li태그를 전부 불러온다.
-    // 새로운 섹션 생성
-    const h1 = document.createElement('h1');
-    // 새로운 h1태그 생성
-    const dataName = document.createElement('li');
-    // 새로운 li태그 생성
-    const dataMain = document.createElement('li');
-    // 새로운 li태그 생성
-    const btnArticle = document.createElement('article');
-    // 버튼들이 들어갈 article태그 생성
-    const updateBtn = document.createElement('button');
-    // 수정 버튼을 a태그로 생성
-    const deleteBtn = document.createElement('button');
-    // 삭제 버튼을 a태그로 생성
-    // * 상세페이지
-    const form = document.createElement('form');
-    const inputName = document.createElement('input');
-    const inputTitle = document.createElement('input');
-    const textarea = document.createElement('textarea');
-    const button = document.createElement('button');
-    // * 수정페이지
-    const delForm = document.createElement('form');
-    const delInfo = document.createElement('div');
-    const delInput = document.createElement('input');
-    const delBtn = document.createElement('button');
+    
+    // ? 새로운 섹션 생성
+    let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
+    let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
+
+    function makeElement(variable, tagName) {
+      for(i=0; i<variable.length; i++) {
+      variable[i] = document.createElement(tagName);
+    }}
+
+    makeElement(variable, tagName);
+    // const h1 = document.createElement('h1');
+    // // 새로운 h1태그 생성
+    // const dataName = document.createElement('li');
+    // // 새로운 li태그 생성
+    // const dataMain = document.createElement('li');
+    // // 새로운 li태그 생성
+    // const btnArticle = document.createElement('article');
+    // // 버튼들이 들어갈 article태그 생성
+    // const updateBtn = document.createElement('button');
+    // // 수정 버튼을 a태그로 생성
+    // const deleteBtn = document.createElement('button');
+    // // 삭제 버튼을 a태그로 생성
+    // // * 상세페이지
+    // const form = document.createElement('form');
+    // const inputName = document.createElement('input');
+    // const inputTitle = document.createElement('input');
+    // const textarea = document.createElement('textarea');
+    // const button = document.createElement('button');
+    // // * 수정페이지
+    // const delForm = document.createElement('form');
+    // const delInfo = document.createElement('div');
+    // const delInput = document.createElement('input');
+    // const delBtn = document.createElement('button');
     // * 삭제페이지
 
     h1.textContent = `${jsonData[i].title}`;
@@ -88,6 +100,8 @@ async function logJSONData() {
       // 버튼 아티클은 새로운 섹션에
     });
 
+    // ! 상세 페이지 
+
     updateBtn.addEventListener('click', function() {
       sections[2].style.display = 'none'
 
@@ -123,6 +137,8 @@ async function logJSONData() {
       sections[3].appendChild(form)
     });
 
+    // ! 수정페이지
+
     deleteBtn.addEventListener('click', function() {
       sections[2].style.display = 'none';
 
@@ -143,6 +159,8 @@ async function logJSONData() {
       
       sections[4].appendChild(delForm);
     })
+
+    // ! 삭제 페이지
   };
 }
 
