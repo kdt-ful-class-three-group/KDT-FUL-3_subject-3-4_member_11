@@ -1,4 +1,4 @@
-function layout(File) {
+function layoutCallback(File, i, callback) {
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +21,12 @@ function layout(File) {
     </section>
   </main>
 
-  <script src="${File}"></script>
+  <script src="${File}"></scrip>
+  <script>${callback(i)}</scrip>
   
 </body>
 </html>
   `
 }
 
-module.exports = layout;
+module.exports = layoutCallback;
