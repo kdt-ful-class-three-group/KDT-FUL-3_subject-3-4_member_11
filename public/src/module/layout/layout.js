@@ -13,7 +13,7 @@ function layout(File, i) {
     <section>
       <article>
         <a href = "/">홈</a>
-        <a href = "/list">글 목록</a>
+        <a href = "/">글 목록</a>
       </article>
         <a href = "/add">글 작성</a>
     </section>

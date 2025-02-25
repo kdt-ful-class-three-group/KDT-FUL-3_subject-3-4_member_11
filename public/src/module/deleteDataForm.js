@@ -22,6 +22,7 @@ req.on('end', function() {
   res.write(layout('./public/src/module/layout/complete/completeDelete.js'));
   // 위의 행동이 끝나면 데이터가 성공적으로 삭제되었습니다. 라는 문구가 나온다.
   res.end();
+
 })
 }
 

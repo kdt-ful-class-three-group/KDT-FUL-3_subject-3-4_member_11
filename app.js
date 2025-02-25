@@ -2,23 +2,12 @@ const http = require('http');
 // http 모듈을 사용하겠다고 선언하는 처리
 const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
-const qs = require('querystring');
-// 쿼리스트링 모듈을 사용하겠다고 선언
-const htmlForm = require('./public/src/module/layout/layout');
-// htmlForm 모듈을 사용하겠다고 선언
-const resForm = require('./etc/resForm');
-// resForm 모듈을 사용하겠다고 선언
 const dataForm = require('./public/src/module/dataForm');
 // dataForm 모듈을 사용하겠다고 선언
-const updateForm = require('./etc/updateForm');
-// updateForm 모듈을 사용하겠다고 선언
 const updateDataForm = require('./public/src/module/updateDataForm');
 // updateDataForm 모듈을 사용하겠다고 선언
-const deleteForm = require('./etc/deleteForm');
-// deleteForm 모듈을 사용하겠다고 선언
 const deleteDataForm = require('./public/src/module/deleteDataForm');
 const layout = require('./public/src/module/layout/layout');
-const postUpdate = require('./etc/postUpdate');
 // deleteDataForm 모듈을 사용하겠다고 선언
 
 
@@ -41,6 +30,7 @@ console.log(req.url);
      //  file은 불러올 파일의 이름을 이야기 한다.
       res.end();
     } else
+
     if(req.url.endsWith('.css')) {
       // 글목록 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': `text/css; charset=utf-8`});
@@ -49,15 +39,7 @@ console.log(req.url);
      //  file은 불러올 파일의 이름을 이야기 한다.
       res.end();
     } else
-    if(req.url === '/list') {
-      // 글목록 페이지 요청에 대한 get요청 처리
-      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(layout('./public/src/src.js'));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
-    } else
-    
+
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
@@ -66,44 +48,40 @@ console.log(req.url);
      //  file은 불러올 파일의 이름을 이야기 한다.
       res.end();
     } else
-    if(req.url.startsWith('/update')) {
-      // 수정페이지 설정. 형식은 update(순서) 형식이므로 startsWith를 사용.
-      const i = req.url.split('update')[1];
-      // i라는 변수에 update의 순서를 가져옴.
-       res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-       res.write(layout('./public/src/dataUpdate.js', i));
-       res.end();
-    } else
-    if(req.url.startsWith('/delete')) {
-      // 삭제 페이지 설정. 형식은 delete(순서) 형식이므로 startsWith를 사용.
-      const i = req.url.split('delete')[1];
-      // i라는 변수에 delete의 순서를 가져옴.
-       res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-       res.write(deleteForm(i));
-       res.end();
-    } else
+
     if(req.url.endsWith('.js')) {
       // url요청의 끝이 .js라면
+      if(fs.existsSync(`.${req.url}`)) {
       res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
      //  res는 말그대로 response,element는 불러올 형식을 의미한다.
       res.write(fs.readFileSync(`.${req.url}`));
      //  file은 불러올 파일의 이름을 이야기 한다.
       res.end();
+      } else {
+        res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
+        res.end(layout('./public/src/module/layout/err/err.js'));
+
+      }
       
     } else 
     if(req.url.endsWith('.json')) {
       // url요청의 끝이 .json 이라면
+      if(fs.existsSync(`.${req.url}`)) {
       res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
      //  res는 말그대로 response,element는 불러올 형식을 의미한다.
       res.write(fs.readFileSync(`.${req.url}`));
      //  file은 불러올 파일의 이름을 이야기 한다.
       res.end();
+      } else {
+        res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
+        res.end(layout('./public/src/module/layout/err/err.js'));
 
+      } 
     } 
     else{
       // 지정되어있지 않은 get요청이 들어오면, 404에러 처리
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-      res.end('404 Not Found');
+      res.end(layout('./public/src/module/layout/err/err.js'));
     } 
   }
   if(req.method === 'POST') {
@@ -128,7 +106,8 @@ console.log(req.url);
     } else {
       // 지정되지 않은 post요청은 404에러가 뜨게 만들어 주었다.
       res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-      res.end('404 Not Found');
+      res.end(layout('./public/src/module/layout/err/err.js'));
+
     }
   }
 });
