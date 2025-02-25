@@ -29,7 +29,7 @@ async function logJSONData() {
     // li태그를 전부 불러온다.
     
     // ? 새로운 섹션 생성
-    let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
+    // let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
     function makeElement(tagName) {
