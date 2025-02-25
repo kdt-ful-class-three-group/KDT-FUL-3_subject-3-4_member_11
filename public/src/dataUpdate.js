@@ -41,7 +41,7 @@ function postUpdate(i) {
   const input = document.querySelectorAll('input');
   const textarea = document.querySelectorAll('textarea');
 
-  form[0].action = `/Update${i}`;
+  form[0].action = `'/Update${i}'`;
   form[0].method = 'post';
 
   input[0].value = jsonData[i].name
