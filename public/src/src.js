@@ -34,7 +34,7 @@ async function logJSONData() {
 
     function makeElement(variable, tagName) {
       for(i=0; i<variable.length; i++) {
-      variable[i] = document.createElement(tagName);
+      variable[i] = document.createElement(tagName[i]);
     }}
 
     makeElement(variable, tagName);
