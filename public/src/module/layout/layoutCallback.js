@@ -21,8 +21,8 @@ function layoutCallback(File, i, callback) {
     </section>
   </main>
 
-  <script src="${File}"></scrip>
-  <script>${callback(i)}</scrip>
+  <script src="${File}"></script>
+  <script>${callback(i)}</script>
   
 </body>
 </html>
