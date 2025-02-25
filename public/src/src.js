@@ -88,7 +88,7 @@ async function logJSONData() {
     updateBtn.addEventListener('click', function() {
       sections[2].style.display = 'none'
 
-      form.action = `/Update${i}`;
+      form.action = `/update${i}`;
       form.method = 'post'
 
       inputName.type = 'text';
