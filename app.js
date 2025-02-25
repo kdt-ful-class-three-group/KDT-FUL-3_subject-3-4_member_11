@@ -10,7 +10,7 @@ const resForm = require('./etc/resForm');
 // resForm 모듈을 사용하겠다고 선언
 const dataForm = require('./public/src/module/dataForm');
 // dataForm 모듈을 사용하겠다고 선언
-const updateForm = require('./public/src/updateForm');
+const updateForm = require('./etc/updateForm');
 // updateForm 모듈을 사용하겠다고 선언
 const updateDataForm = require('./public/src/module/updateDataForm');
 // updateDataForm 모듈을 사용하겠다고 선언
@@ -18,7 +18,7 @@ const deleteForm = require('./public/src/deleteForm');
 // deleteForm 모듈을 사용하겠다고 선언
 const deleteDataForm = require('./public/src/module/deleteDataForm');
 const layout = require('./public/src/module/layout/layout');
-const postUpdate = require('./public/src/module/postUpdate');
+const postUpdate = require('./etc/postUpdate');
 // deleteDataForm 모듈을 사용하겠다고 선언
 
 
@@ -26,9 +26,9 @@ const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
 console.log(req.url);
 
-  if(!fs.existsSync('data.json')) {
+  if(!fs.existsSync('./data/data.json')) {
     // 만일 data.json파일이 존재하지 않다면,
-  fs.writeFileSync('data.json', JSON.stringify([], null, 2), 'utf-8');
+  fs.writeFileSync('./data/data.json', JSON.stringify([], null, 2), 'utf-8');
   // 내용이 []인 data.json파일을 생성한다.
 }
   if(req.method === 'GET') {
