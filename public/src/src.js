@@ -29,7 +29,7 @@ async function logJSONData() {
     // li태그를 전부 불러온다.
     
     // ? 새로운 섹션 생성
-    let variable = [h1, dataName, dataMain, btnArticle, updateBtn, deleteBtn, form, inputName, inputTitle, textarea, button, delForm, delInfo, delInput, delBtn];
+    let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
     function makeElement(variable, tagName) {
@@ -38,7 +38,7 @@ async function logJSONData() {
     }}
 
     makeElement(variable, tagName);
-    // const h1 = document.createElement('h1');
+    // const h1 = document.('h1');
     // // 새로운 h1태그 생성
     // const dataName = document.createElement('li');
     // // 새로운 li태그 생성
@@ -49,7 +49,7 @@ async function logJSONData() {
     // const updateBtn = document.createElement('button');
     // // 수정 버튼을 a태그로 생성
     // const deleteBtn = document.createElement('button');
-    // // 삭제 버튼을 a태그로 생성
+    // // 삭제 버튼을 a태그로 생성createElement
     // // * 상세페이지
     // const form = document.createElement('form');
     // const inputName = document.createElement('input');
@@ -63,20 +63,20 @@ async function logJSONData() {
     // const delBtn = document.createElement('button');
     // * 삭제페이지
 
-    h1.textContent = `${jsonData[i].title}`;
+    variable[0].textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
-    dataName.textContent = `작성자: ${jsonData[i].name}`;
+    variable[1].textContent = `작성자: ${jsonData[i].name}`;
     // li태그 하나 에는 jsondata의 이름을 넣는다.
-    dataMain.textContent = `내용: ${jsonData[i].main}`;
+    variable[2].textContent = `내용: ${jsonData[i].main}`;
     // 남은 li태그 하나 에는 jsondata의 본문을 넣는다.
-    btnArticle.style.display = 'flex';
-    btnArticle.style.flexDirection = 'row';
-    btnArticle.style.justifyContent = 'flex-end';
+    variable[3].style.display = 'flex';
+    variable[3].style.flexDirection = 'row';
+    variable[3].style.justifyContent = 'flex-end';
     // 버튼아티클 스타일 지정
 
-    updateBtn.textContent = `수정`;
+    variable[4].textContent = `수정`;
     // 수정버튼에 수정이라는 글자를 넣어준다.
-    deleteBtn.textContent = `삭제`;
+    variable[4].textContent = `삭제`;
     // 삭제버튼에 삭제라는 글자를 넣어준다.
     // * 상세 페이지 내용
     
@@ -86,17 +86,17 @@ async function logJSONData() {
       sections[1].style.display = 'none'
       // 2번쨰 섹션이 display none 되고,
 
-      sections[2].appendChild(h1);
+      sections[2].appendChild(variable[0]);
       // h1태그 는 새로운 섹션에
-      sections[2].appendChild(dataName);
+      sections[2].appendChild(variable[1]);
       // dataName도 새로운 섹션에
-      sections[2].appendChild(dataMain);
+      sections[2].appendChild(variable[2]);
       // dataMain도 새로운 섹션에
-      btnArticle.appendChild(updateBtn);
+      variable[3].appendChild(variable[4]);
       // 수정버튼은 버튼아티클에
-      btnArticle.appendChild(deleteBtn);
+      variable[3].appendChild(variable[5]);
       // 삭제버튼도 버튼아티클에
-      sections[2].appendChild(btnArticle);
+      sections[2].appendChild(variable[3]);
       // 버튼 아티클은 새로운 섹션에
     });
 
