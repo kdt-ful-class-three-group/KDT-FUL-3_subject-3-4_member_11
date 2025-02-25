@@ -12,17 +12,17 @@ form.method = 'post';
 inputName.type = 'text';
 inputName.name = 'name';
 inputName.placeholder = 'name';
-inputName.required
+inputName.required = 'true';
 
 inputTitle.type = 'text';
 inputTitle.name = 'title';
 inputTitle.placeholder = 'title';
-inputTitle.required
+inputTitle.required = 'true';
 
 textarea.type = 'text';
 textarea.name = 'main';
 textarea.placeholder = 'main';
-textarea.required
+textarea.required = 'true';
 
 button.type = 'submit';
 button.textContent = '작성'

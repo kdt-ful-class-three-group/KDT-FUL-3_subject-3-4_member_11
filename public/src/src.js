@@ -45,6 +45,11 @@ async function logJSONData() {
     const textarea = document.createElement('textarea');
     const button = document.createElement('button');
     // * 수정페이지
+    const delForm = document.createElement('form');
+    const delInfo = document.createElement('div');
+    const delInput = document.createElement('input');
+    const delBtn = document.createElement('button');
+    // * 삭제페이지
 
     h1.textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
@@ -81,8 +86,6 @@ async function logJSONData() {
       // 삭제버튼도 버튼아티클에
       sections[2].appendChild(btnArticle);
       // 버튼 아티클은 새로운 섹션에
-      main.appendChild(sections[2]);
-      // 새로운 섹션은 main에 자식요소로 지정해서, 생성되게 만듦.
     });
 
     updateBtn.addEventListener('click', function() {
@@ -94,19 +97,19 @@ async function logJSONData() {
       inputName.type = 'text';
       inputName.name = 'name';
       inputName.placeholder = 'name';
-      inputName.required
+      inputName.required = 'true';
       inputName.value = jsonData[i].name
 
       inputTitle.type = 'text';
       inputTitle.name = 'title';
       inputTitle.placeholder = 'title';
-      inputTitle.required
+      inputTitle.required = 'true';
       inputTitle.value = jsonData[i].title
 
       textarea.type = 'text';
       textarea.name = 'main';
       textarea.placeholder = 'main';
-      textarea.required
+      textarea.required = 'true';
       textarea.value = jsonData[i].main
 
       button.type = 'submit';
@@ -119,6 +122,27 @@ async function logJSONData() {
 
       sections[3].appendChild(form)
     });
+
+    deleteBtn.addEventListener('click', function() {
+      sections[2].style.display = 'none';
+
+      delForm.action = `/delete${i}`;
+      delForm.method = 'post';
+      delInfo.textContent = '삭제를 원하신다면 아래에 삭제 라고 입력해 주십시오.';
+      delInput.type = 'text';
+      delInput.name = 'delete';
+      delInput.placeholder = '삭제';
+      delInput.pattern = '삭제';
+      delInput.required = 'true';
+      delBtn.type = 'submit';
+      delBtn.textContent = '삭제';
+
+      delForm.appendChild(delInfo);
+      delForm.appendChild(delInput);
+      delForm.appendChild(delBtn);
+      
+      sections[4].appendChild(delForm);
+    })
   };
 }
 
