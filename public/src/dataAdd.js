@@ -1,3 +1,4 @@
+import { setPosition } from "./module/setPosition.js";
 import { setType } from "./module/setType.js";
 
 const sections = document.querySelectorAll('section');
@@ -18,9 +19,7 @@ setType(textarea, 'main', '');
 button.type = 'submit';
 button.textContent = '작성'
 
-form.appendChild(inputName);
-form.appendChild(inputTitle);
-form.appendChild(textarea);
-form.appendChild(button);
+let babys = [inputName, inputTitle, textarea, button];
+setPosition(form, babys);
 
 sections[1].appendChild(form)

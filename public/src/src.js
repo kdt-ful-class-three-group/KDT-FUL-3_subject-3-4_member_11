@@ -1,3 +1,5 @@
+import { makeElement } from "./module/makeElement.js";
+import { setPosition } from "./module/setPosition.js";
 import { setType } from "./module/setType.js";
 
 async function logJSONData() {
@@ -33,26 +35,7 @@ async function logJSONData() {
 
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
-    function makeElement(tagName) {
-      for(let n=0; n<tagName.length; n++) {
-      tagName[n] = document.createElement(tagName[n]);
-    }};
-
     makeElement(tagName);
-
-    function setPosition(parent, baby) {
-      for(let i=0; i<baby.length; i++) {
-      parent.appendChild(baby[i]);
-      }
-    };
-
-    // function setType(tagName, name, value) {
-    //   tagName.type = 'text';
-    //   tagName.name = name;
-    //   tagName.placeholder = name;
-    //   tagName.required = 'true';
-    //   tagName.value = value
-    // };
 
     tagName[0].textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
