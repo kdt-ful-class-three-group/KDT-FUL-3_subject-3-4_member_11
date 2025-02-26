@@ -1,4 +1,4 @@
-"use strict";
+import { setType } from "./module/setType.js";
 
 const sections = document.querySelectorAll('section');
 
@@ -11,20 +11,9 @@ const button = document.createElement('button');
 form.action = '/data';
 form.method = 'post';
 
-inputName.type = 'text';
-inputName.name = 'name';
-inputName.placeholder = 'name';
-inputName.required = 'true';
-
-inputTitle.type = 'text';
-inputTitle.name = 'title';
-inputTitle.placeholder = 'title';
-inputTitle.required = 'true';
-
-textarea.type = 'text';
-textarea.name = 'main';
-textarea.placeholder = 'main';
-textarea.required = 'true';
+setType(inputName, 'name', '');
+setType(inputTitle, 'title', '');
+setType(textarea, 'main', '');
 
 button.type = 'submit';
 button.textContent = '작성'

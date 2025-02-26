@@ -1,5 +1,3 @@
-"use strict";
-
 import { setType } from "./module/setType.js";
 
 async function logJSONData() {
@@ -97,7 +95,9 @@ async function logJSONData() {
       tagName[6].method = 'post'
 
       setType(tagName[7], 'name', jsonData[i].name);
+      tagName[7].type = 'text';
       setType(tagName[8], 'title', jsonData[i].title);
+      tagName[8].type = 'text';
       setType(tagName[9], 'main', jsonData[i].main);
 
 
