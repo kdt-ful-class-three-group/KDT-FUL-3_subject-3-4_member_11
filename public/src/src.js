@@ -75,12 +75,7 @@ async function logJSONData() {
       sections[1].style.display = 'none'
       // 2번쨰 섹션이 display none 되고,
       setPosition(sections[2], babys);
-      // sections[2].appendChild(tagName[0]);
-      // // h1태그 는 새로운 섹션에
-      // sections[2].appendChild(tagName[1]);
-      // // dataName도 새로운 섹션에
-      // sections[2].appendChild(tagName[2]);
-      // // dataMain도 새로운 섹션에
+
       tagName[3].appendChild(tagName[4]);
       // 수정버튼은 버튼아티클에
       tagName[3].appendChild(tagName[5]);
@@ -107,10 +102,6 @@ async function logJSONData() {
 
       let babys = [tagName[7], tagName[8], tagName[9], tagName[10]];
       setPosition(tagName[6], babys)
-      // tagName[6].appendChild(tagName[7]);
-      // tagName[6].appendChild(tagName[8]);
-      // tagName[6].appendChild(tagName[9]);
-      // tagName[6].appendChild(tagName[10]);
 
       sections[3].appendChild(tagName[6])
     });
@@ -131,9 +122,6 @@ async function logJSONData() {
       tagName[14].textContent = '삭제';
       let babys = [tagName[12], tagName[13], tagName[14]];
       setPosition(tagName[11], babys);
-      // tagName[11].appendChild(tagName[12]);
-      // tagName[11].appendChild(tagName[13]);
-      // tagName[11].appendChild(tagName[14]);
       
       sections[4].appendChild(tagName[11]);
     })

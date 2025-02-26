@@ -1,4 +1,4 @@
-function layout(File, i) {
+function layout(File) {
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ function layout(File, i) {
     
   </main>
 
-  <script src="${File}"></script>
+  <script src="${File}" ></script>
   
 </body>
 </html>
