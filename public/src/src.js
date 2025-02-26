@@ -1,3 +1,5 @@
+"use strict";
+
 import { setType } from "./module/setType.js";
 
 async function logJSONData() {

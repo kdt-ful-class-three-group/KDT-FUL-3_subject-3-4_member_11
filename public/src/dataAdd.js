@@ -1,3 +1,5 @@
+"use strict";
+
 const sections = document.querySelectorAll('section');
 
 const form = document.createElement('form');
