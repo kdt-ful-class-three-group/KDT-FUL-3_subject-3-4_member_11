@@ -28,7 +28,7 @@ function layout(File) {
     
   </main>
 
-  <script src="${File}" ></script>
+  <script type="module" src="${File}" ></script>
   
 </body>
 </html>

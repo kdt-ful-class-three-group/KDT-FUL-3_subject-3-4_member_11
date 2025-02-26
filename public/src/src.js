@@ -1,3 +1,5 @@
+import { setType } from "./module/setType.js";
+
 async function logJSONData() {
   const response = await fetch("./data/data.json");
   const jsonData = await response.json();
@@ -44,13 +46,13 @@ async function logJSONData() {
       }
     };
 
-    function setType(tagName, name, value) {
-      tagName.type = 'text';
-      tagName.name = name;
-      tagName.placeholder = name;
-      tagName.required = 'true';
-      tagName.value = value
-    };
+    // function setType(tagName, name, value) {
+    //   tagName.type = 'text';
+    //   tagName.name = name;
+    //   tagName.placeholder = name;
+    //   tagName.required = 'true';
+    //   tagName.value = value
+    // };
 
     tagName[0].textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
