@@ -13,15 +13,22 @@ function layout(File) {
     <section>
       <article>
         <a href = "/">홈</a>
-        <a href = "/list">글 목록</a>
+        <a href = "/">글 목록</a>
       </article>
         <a href = "/add">글 작성</a>
     </section>
     <section>
     </section>
+    <section>
+    </section>
+    <section>
+    </section>
+    <section>
+    </section>
+    
   </main>
 
-  <script src="${File}"></script>
+  <script src="${File}" ></script>
   
 </body>
 </html>
