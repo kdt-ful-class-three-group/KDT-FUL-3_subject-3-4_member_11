@@ -29,7 +29,7 @@ async function logJSONData() {
     // li태그를 전부 불러온다.
     
     // ? 새로운 섹션 생성
-    // let variable = ['h1', 'dataName', 'dataMain', 'btnArticle', 'updateBtn', 'deleteBtn', 'form', 'inputName', 'inputTitle', 'textarea', 'button', 'delForm', 'delInfo', 'delInput', 'delBtn'];
+
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
     function makeElement(tagName) {
@@ -80,27 +80,37 @@ async function logJSONData() {
 
     tagName[4].addEventListener('click', function() {
       sections[2].style.display = 'none'
+      function setType(tagName, name, value) {
+        tagName.type = 'text';
+        tagName.name = name;
+        tagName.placeholder = name;
+        tagName.required = 'true';
+        tagName.value = value
+      }
 
       tagName[6].action = `/update${i}`;
       tagName[6].method = 'post'
 
-      tagName[7].type = 'text';
-      tagName[7].name = 'name';
-      tagName[7].placeholder = 'name';
-      tagName[7].required = 'true';
-      tagName[7].value = jsonData[i].name
+      setType(tagName[7], 'name', jsonData[i].name);
+      // tagName[7].type = 'text';
+      // tagName[7].name = 'name';
+      // tagName[7].placeholder = 'name';
+      // tagName[7].required = 'true';
+      // tagName[7].value = jsonData[i].name
 
-      tagName[8].type = 'text';
-      tagName[8].name = 'title';
-      tagName[8].placeholder = 'title';
-      tagName[8].required = 'true';
-      tagName[8].value = jsonData[i].title
-
-      tagName[9].type = 'text';
-      tagName[9].name = 'main';
-      tagName[9].placeholder = 'main';
-      tagName[9].required = 'true';
-      tagName[9].value = jsonData[i].main
+      setType(tagName[8], 'title', jsonData[i].title);
+      // tagName[8].type = 'text';
+      // tagName[8].name = 'title';
+      // tagName[8].placeholder = 'title';
+      // tagName[8].required = 'true';
+      // tagName[8].value = jsonData[i].title
+      
+      setType(tagName[9], 'main', jsonData[i].main);
+      // tagName[9].type = 'text';
+      // tagName[9].name = 'main';
+      // tagName[9].placeholder = 'main';
+      // tagName[9].required = 'true';
+      // tagName[9].value = jsonData[i].main
 
       tagName[10].type = 'submit';
       tagName[10].textContent = '작성'
