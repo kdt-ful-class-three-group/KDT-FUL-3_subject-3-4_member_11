@@ -16,9 +16,10 @@ const resForm = require('./public/src/module/resForm');
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
 console.log(req.url);
+// 서버가 요청하는 url을 콘솔로 나타낸다.
 
   if(!fs.existsSync('./data/data.json')) {
-    // 만일 data.json파일이 존재하지 않다면,
+    // 만일 data.json파일이 존재하지 않다면, => existsSync = 파일이 존재하면 true 라는 의미인데, 앞에 Not연산자 '!'가 붙었으므로 이 코드는 파일이 존재하지 않으면 true라는 조건으로 사용할 수 있다.
   fs.writeFileSync('./data/data.json', JSON.stringify([], null, 2), 'utf-8');
   // 내용이 []인 data.json파일을 생성한다.
 }
@@ -27,6 +28,7 @@ console.log(req.url);
     if(req.url === '/') {
       // 초기화면 및 홈 요청에 대한 get요청 처리
       resForm(res, 200, 'html', layout('./public/src/src.js'));
+      // script src가 src.js인 html을 불러온다.
     } else
 
     if(req.url.endsWith('.css')) {
@@ -37,6 +39,8 @@ console.log(req.url);
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
       resForm(res, 200, 'html', layout('./public/src/dataAdd.js'));
+      // script src가 dataAdd.js인 html을 불러온다.
+
       
     } else
 
@@ -47,6 +51,8 @@ console.log(req.url);
 
       } else {
         resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
+      // script src가 err.js인 html을 불러온다.
+
       }
       
     } else 
@@ -57,11 +63,15 @@ console.log(req.url);
 
       } else {
         resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
+      // script src가 err.js인 html을 불러온다.
+
       } 
     } 
     else{
       // 지정되어있지 않은 get요청이 들어오면, 404에러 처리
       resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
+      // script src가 err.js인 html을 불러온다.
+
     } 
   }
   if(req.method === 'POST') {
@@ -86,6 +96,8 @@ console.log(req.url);
     } else {
       // 지정되지 않은 post요청은 404에러가 뜨게 만들어 주었다.
       resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
+      // script src가 err.js인 html을 불러온다.
+
     }
   }
 });
