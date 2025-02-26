@@ -1,6 +1,6 @@
 const qs = require('querystring');
 const fs = require('fs');
-const htmlForm = require('./layout/htmlForm');
+const layout = require('./layout/layout');
 
 function dataForm(req, res) {
 
@@ -19,25 +19,25 @@ req.on('data', function(data) {
 
   if(fs.existsSync('data.json')) {
     // 만일 data.json이라는 파일이 존재한다면
-    const jsonData = JSON.parse(fs.readFileSync('data.json'));
+    const jsonData = JSON.parse(fs.readFileSync('./data/data.json'));
     // jsonData에 data.json파일을 해석해서 객체로 만들고,
     console.log(jsonData);
     // jsonData 확인
     jsonData.push(dataPar);
     // jsonData배열에 parseData객체를 넣는다.
-    fs.writeFileSync('data.json', JSON.stringify(jsonData, null, 2), 'utf-8');
+    fs.writeFileSync('./data/data.json', JSON.stringify(jsonData, null, 2), 'utf-8');
     // jsonData를 json파일로 변경.
     // 모양은 원래 json내용 + 추가된 내용 을 덮어씌우는 형태
 
   } else {
     // data.json파일이 존재하지 않는다면
-  fs.writeFileSync('data.json', JSON.stringify(dataArr, null, 2), 'utf-8');
+  fs.writeFileSync('./data/data.json', JSON.stringify(dataArr, null, 2), 'utf-8');
   // 위에서 만들어진 파싱된 데이터가 들어있는 배열을 data.json 파일을 생성 해준다.
   }
 })
 req.on('end', function() {
   res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-  res.write(htmlForm('데이터가 성공적으로 추가되었습니다.'));
+  res.write(layout('./public/src/module/layout/addComplete.js'));
   // 위의 행동들이 잘 실행되면, 데이터가 성공적으로 추가 되었습니다 문구가 표시됨.
   res.end();
 })
