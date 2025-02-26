@@ -33,35 +33,11 @@ async function logJSONData() {
     let tagName = ['h1', 'li', 'li', 'article', 'button', 'button', 'form', 'input', 'input', 'textarea', 'button', 'form', 'div', 'input', 'button'];
 
     function makeElement(tagName) {
-      for(i=0; i<tagName.length; i++) {
-      tagName[i] = document.createElement(tagName[i]);
+      for(let n=0; n<tagName.length; n++) {
+      tagName[n] = document.createElement(tagName[n]);
     }}
 
     makeElement(tagName);
-    // const h1 = document.('h1');
-    // // 새로운 h1태그 생성
-    // const dataName = document.createElement('li');
-    // // 새로운 li태그 생성
-    // const dataMain = document.createElement('li');
-    // // 새로운 li태그 생성
-    // const btnArticle = document.createElement('article');
-    // // 버튼들이 들어갈 article태그 생성
-    // const updateBtn = document.createElement('button');
-    // // 수정 버튼을 a태그로 생성
-    // const deleteBtn = document.createElement('button');
-    // // 삭제 버튼을 a태그로 생성createElement
-    // // * 상세페이지
-    // const form = document.createElement('form');
-    // const inputName = document.createElement('input');
-    // const inputTitle = document.createElement('input');
-    // const textarea = document.createElement('textarea');
-    // const button = document.createElement('button');
-    // // * 수정페이지
-    // const delForm = document.createElement('form');
-    // const delInfo = document.createElement('div');
-    // const delInput = document.createElement('input');
-    // const delBtn = document.createElement('button');
-    // * 삭제페이지
 
     tagName[0].textContent = `${jsonData[i].title}`;
     // h1태그에는 jsondata의 제목을 넣는다.
@@ -76,7 +52,7 @@ async function logJSONData() {
 
     tagName[4].textContent = `수정`;
     // 수정버튼에 수정이라는 글자를 넣어준다.
-    tagName[4].textContent = `삭제`;
+    tagName[5].textContent = `삭제`;
     // 삭제버튼에 삭제라는 글자를 넣어준다.
     // * 상세 페이지 내용
     
@@ -102,62 +78,62 @@ async function logJSONData() {
 
     // ! 상세 페이지 
 
-    updateBtn.addEventListener('click', function() {
+    tagName[4].addEventListener('click', function() {
       sections[2].style.display = 'none'
 
-      form.action = `/update${i}`;
-      form.method = 'post'
+      tagName[6].action = `/update${i}`;
+      tagName[6].method = 'post'
 
-      inputName.type = 'text';
-      inputName.name = 'name';
-      inputName.placeholder = 'name';
-      inputName.required = 'true';
-      inputName.value = jsonData[i].name
+      tagName[7].type = 'text';
+      tagName[7].name = 'name';
+      tagName[7].placeholder = 'name';
+      tagName[7].required = 'true';
+      tagName[7].value = jsonData[i].name
 
-      inputTitle.type = 'text';
-      inputTitle.name = 'title';
-      inputTitle.placeholder = 'title';
-      inputTitle.required = 'true';
-      inputTitle.value = jsonData[i].title
+      tagName[8].type = 'text';
+      tagName[8].name = 'title';
+      tagName[8].placeholder = 'title';
+      tagName[8].required = 'true';
+      tagName[8].value = jsonData[i].title
 
-      textarea.type = 'text';
-      textarea.name = 'main';
-      textarea.placeholder = 'main';
-      textarea.required = 'true';
-      textarea.value = jsonData[i].main
+      tagName[9].type = 'text';
+      tagName[9].name = 'main';
+      tagName[9].placeholder = 'main';
+      tagName[9].required = 'true';
+      tagName[9].value = jsonData[i].main
 
-      button.type = 'submit';
-      button.textContent = '작성'
+      tagName[10].type = 'submit';
+      tagName[10].textContent = '작성'
 
-      form.appendChild(inputName);
-      form.appendChild(inputTitle);
-      form.appendChild(textarea);
-      form.appendChild(button);
+      tagName[6].appendChild(tagName[7]);
+      tagName[6].appendChild(tagName[8]);
+      tagName[6].appendChild(tagName[9]);
+      tagName[6].appendChild(tagName[10]);
 
-      sections[3].appendChild(form)
+      sections[3].appendChild(tagName[6])
     });
 
     // ! 수정페이지
 
-    deleteBtn.addEventListener('click', function() {
+    tagName[5].addEventListener('click', function() {
       sections[2].style.display = 'none';
 
-      delForm.action = `/delete${i}`;
-      delForm.method = 'post';
-      delInfo.textContent = '삭제를 원하신다면 아래에 삭제 라고 입력해 주십시오.';
-      delInput.type = 'text';
-      delInput.name = 'delete';
-      delInput.placeholder = '삭제';
-      delInput.pattern = '삭제';
-      delInput.required = 'true';
-      delBtn.type = 'submit';
-      delBtn.textContent = '삭제';
+      tagName[11].action = `/delete${i}`;
+      tagName[11].method = 'post';
+      tagName[12].textContent = '삭제를 원하신다면 아래에 삭제 라고 입력해 주십시오.';
+      tagName[13].type = 'text';
+      tagName[13].name = 'delete';
+      tagName[13].placeholder = '삭제';
+      tagName[13].pattern = '삭제';
+      tagName[13].required = 'true';
+      tagName[14].type = 'submit';
+      tagName[14].textContent = '삭제';
 
-      delForm.appendChild(delInfo);
-      delForm.appendChild(delInput);
-      delForm.appendChild(delBtn);
+      tagName[11].appendChild(tagName[12]);
+      tagName[11].appendChild(tagName[13]);
+      tagName[11].appendChild(tagName[14]);
       
-      sections[4].appendChild(delForm);
+      sections[4].appendChild(tagName[11]);
     })
 
     // ! 삭제 페이지
