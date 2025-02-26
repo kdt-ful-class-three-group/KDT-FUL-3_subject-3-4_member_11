@@ -1,6 +1,7 @@
 const qs = require('querystring');
 const fs = require('fs');
 const layout = require('./layout/layout');
+const resForm = require('./resForm');
 
 function dataForm(req, res) {
 
@@ -17,7 +18,7 @@ req.on('data', function(data) {
   dataArr.push(dataPar)
   // 빈배열 안에 post데이터를 파싱한 객체를 집어넣는다. 이렇게 하면 파싱된 객체를 배열로서 사용할 수 있다.
 
-  if(fs.existsSync('data.json')) {
+  if(fs.existsSync('./data/data.json')) {
     // 만일 data.json이라는 파일이 존재한다면
     const jsonData = JSON.parse(fs.readFileSync('./data/data.json'));
     // jsonData에 data.json파일을 해석해서 객체로 만들고,
@@ -36,10 +37,7 @@ req.on('data', function(data) {
   }
 })
 req.on('end', function() {
-  res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-  res.write(layout('./public/src/module/layout/addComplete.js'));
-  // 위의 행동들이 잘 실행되면, 데이터가 성공적으로 추가 되었습니다 문구가 표시됨.
-  res.end();
+  resForm(res, 200, 'html', layout('./public/src/module/layout/complete/completeAdd.js'));
 })
 }
 

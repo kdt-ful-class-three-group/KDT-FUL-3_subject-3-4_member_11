@@ -4,12 +4,14 @@ const fs = require('fs');
 // fs모듈을 사용하겠다고 선언하는 처리
 const dataForm = require('./public/src/module/dataForm');
 // dataForm 모듈을 사용하겠다고 선언
-const updateDataForm = require('./public/src/module/updateDataForm');
+const updateForm = require('./public/src/module/updateForm');
 // updateDataForm 모듈을 사용하겠다고 선언
-const deleteDataForm = require('./public/src/module/deleteDataForm');
-const layout = require('./public/src/module/layout/layout');
+const deleteForm = require('./public/src/module/deleteForm');
 // deleteDataForm 모듈을 사용하겠다고 선언
-
+const layout = require('./public/src/module/layout/layout');
+// layout 모듈을 사용하겠다고 선언
+const resForm = require('./public/src/module/resForm');
+// resForm 모듈을 사용하겠다고 선언
 
 const server = http.createServer(function(req, res) {
 // server라는 변수에 서버를 생성하는 함수를 담는다.
@@ -24,64 +26,42 @@ console.log(req.url);
   // 요청받는 메서드가 GET일 경우 요청을 처리한다.
     if(req.url === '/') {
       // 초기화면 및 홈 요청에 대한 get요청 처리
-      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(layout('./public/src/src.js'));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
+      resForm(res, 200, 'html', layout('./public/src/src.js'));
     } else
 
     if(req.url.endsWith('.css')) {
       // 글목록 페이지 요청에 대한 get요청 처리
-      res.writeHead(200, {'content-type': `text/css; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(fs.readFileSync(`./${req.url}`));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
+      resForm(res, 200, 'css', fs.readFileSync(`./${req.url}`));
     } else
 
     if(req.url === '/add') {
       // 글 상세 페이지 요청에 대한 get요청 처리
-      res.writeHead(200, {'content-type': `text/html; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(layout('./public/src/dataAdd.js'));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
+      resForm(res, 200, 'html', layout('./public/src/dataAdd.js'));
+      
     } else
 
     if(req.url.endsWith('.js')) {
       // url요청의 끝이 .js라면
       if(fs.existsSync(`.${req.url}`)) {
-      res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(fs.readFileSync(`.${req.url}`));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
-      } else {
-        res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-        res.end(layout('./public/src/module/layout/err/err.js'));
+      resForm(res, 200, 'javascript', fs.readFileSync(`.${req.url}`));
 
+      } else {
+        resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
       }
       
     } else 
     if(req.url.endsWith('.json')) {
       // url요청의 끝이 .json 이라면
       if(fs.existsSync(`.${req.url}`)) {
-      res.writeHead(200, {'content-type': `text/javascript; charset=utf-8`});
-     //  res는 말그대로 response,element는 불러올 형식을 의미한다.
-      res.write(fs.readFileSync(`.${req.url}`));
-     //  file은 불러올 파일의 이름을 이야기 한다.
-      res.end();
-      } else {
-        res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-        res.end(layout('./public/src/module/layout/err/err.js'));
+      resForm(res, 200, 'javascript', fs.readFileSync(`.${req.url}`));
 
+      } else {
+        resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
       } 
     } 
     else{
       // 지정되어있지 않은 get요청이 들어오면, 404에러 처리
-      res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-      res.end(layout('./public/src/module/layout/err/err.js'));
+      resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
     } 
   }
   if(req.method === 'POST') {
@@ -94,7 +74,7 @@ console.log(req.url);
       // url의 시작이 update인 post요청에 대한 처리
       const i = req.url.split('update')[1];
       // i는 요청 url의 update뒤의 숫자.
-      updateDataForm(req, res, i);
+      updateForm(req, res, i);
     } else
     if(req.url.startsWith('/delete')) {
       // url의 시작이 delete인 post요청에 대한 처리
@@ -102,12 +82,10 @@ console.log(req.url);
       const i = req.url.split('delete')[1];
       // i는 요청 url의 delete뒤의 숫자.
       console.log(i);
-      deleteDataForm(req, res, i);
+      deleteForm(req, res, i);
     } else {
       // 지정되지 않은 post요청은 404에러가 뜨게 만들어 주었다.
-      res.writeHead(404, {'content-type': 'text/html; charset=utf-8'});
-      res.end(layout('./public/src/module/layout/err/err.js'));
-
+      resForm(res, 404, 'html', layout('./public/src/module/layout/err/err.js'));
     }
   }
 });
